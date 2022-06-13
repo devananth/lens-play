@@ -1,0 +1,37 @@
+@import url("https://lens-ui.netlify.app/style.css");
+@import url("https://use.fontawesome.com/releases/v5.12.1/css/all.css");
+
+:root{
+    --light-theme-bg-color: #e5e5e5;
+    --light-theme-navbar-bg-color: #fff;
+    --dark-theme-bg-color: #282827;
+    --dark-theme-navbar-bg-color: #111;
+    --light-theme-text-color: #282827;
+    --dark-theme-text-color: #fff;
+    --overlay-text-color: rgba(40,66,88,0.10196078431372549);
+    --overlay-bg-color: rgba(0,0,0,0.3);
+    --text-color: #282827;
+    --text-active-color: rgba(40,40,39,0.7450980392156863);
+    --primary-color: #e50048;
+    --primary-active-color: #c90039;
+    --primary-bg-color: #ffbfd2;
+    --light-theme-divider-color : #dbdbdb;
+    --dark-them-divider-color : #3c3c3c;
+}
+
+body{
+    font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    background-color: var(--light-theme-bg-color);
+    color : var(--light-theme-text-color);
+}
+
+.cursor-ptr{
+    cursor: pointer;
+}
+
+.w-100{
+    width: 100%;
+}
+
