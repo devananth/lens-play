@@ -1,0 +1,21 @@
+.nav__search__container{
+    border: 1px solid var(--primary-active-color);
+    width : 80%;
+}
+
+.nav__search::placeholder{
+    font-weight: bold;
+}
+
+@media  screen and (max-width : 768px) {
+    
+
+    .nav__search__container.mobile__search{
+        display: flex;
+        justify-content: center;
+        width : 80%;
+        margin : auto;
+    }
+
+  
+}
