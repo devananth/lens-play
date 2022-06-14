@@ -6,7 +6,6 @@ const Playlist = () => {
 
   return (
     <>
-      <Navbar />
       <main className="d-flex">
         <Drawer />
         <h5>My Playlist (2)</h5>

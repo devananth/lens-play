@@ -35,3 +35,6 @@ body{
     width: 100%;
 }
 
+.authentication__wrapper{
+    min-height: calc(100vh - 4rem);
+}

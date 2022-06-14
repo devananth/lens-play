@@ -6,7 +6,6 @@ const History = () => {
 
   return (
     <>
-      <Navbar />
       <main className="d-flex">
         <Drawer />
         <h5>My history (2)</h5>

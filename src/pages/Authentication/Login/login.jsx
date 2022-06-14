@@ -64,11 +64,7 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
-      <section
-        className="d-flex xy-center"
-        style={{ minHeight: "calc(100vh - 4rem)" }}
-      >
+      <section className="d-flex xy-center authentication__wrapper">
         <FormContainer formHeadingText={"Login"} submitHandler={loginHandler}>
           <FormInput
             label={"Email Address"}

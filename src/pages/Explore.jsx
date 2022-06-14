@@ -6,7 +6,6 @@ const Explore = () => {
 
   return (
     <>
-      <Navbar />
       <main className="d-flex gap-1">
         <Drawer />
         <h3>Explore Page</h3>

@@ -6,7 +6,6 @@ const WatchLater = () => {
 
   return (
     <>
-      <Navbar />
       <main className="d-flex">
         <Drawer />
         <h5>Watch Later (2)</h5>

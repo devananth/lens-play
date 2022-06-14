@@ -6,7 +6,6 @@ const Liked = () => {
 
   return (
     <>
-      <Navbar />
       <main className="d-flex">
         <Drawer />
         <h5>Liked Videos (2)</h5>
