@@ -5,7 +5,7 @@ const authReducer = (authState, authDispatch) => {
     case authActions.SAVE_USER_DETAILS:
       const { authToken, isUserLoggedIn, userName } = payload;
       localStorage.setItem(
-        "loginDetails",
+        "userDetails",
         JSON.stringify({
           authToken,
           isUserLoggedIn,
@@ -14,7 +14,7 @@ const authReducer = (authState, authDispatch) => {
       );
       return { ...payload };
     case authActions.DELETE_USER_DETAILS:
-      localStorage.removeItem("loginDetails");
+      localStorage.removeItem("userDetails");
       return { authToken: null, userName: null, isUserLoggedIn: false };
   }
 };

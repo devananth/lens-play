@@ -1,8 +1,13 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+  useResolvedPath,
+} from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import {
-  Navbar,
+  Loader,
   FormContainer,
   FormInput,
   FormButton,
@@ -40,6 +45,7 @@ const SignUp = () => {
   );
 
   const [apiError, setApiError] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   const navigate = useNavigate();
 
@@ -47,6 +53,25 @@ const SignUp = () => {
     event.preventDefault();
 
     if (signupFormValidation(signupForm, signupFormErrorDispatch)) {
+      setLoader(true);
+      try {
+        const response = await axios.post("/api/auth/signup", signupForm);
+
+        if (response?.status === 201) {
+          const { encodedToken: authToken, firstName: userName } =
+            response?.data;
+          authDispatch({
+            type: authActions.SAVE_USER_DETAILS,
+            payload: { authToken, isUserLoggedIn: true, userName },
+          });
+          navigate("/");
+        }
+      } catch (error) {
+        console.error(error);
+        setApiError("Invalid Credentials");
+      } finally {
+        setLoader(false);
+      }
     }
   };
 
@@ -112,35 +137,38 @@ const SignUp = () => {
             </span>
           )}
 
-          <div className="d-flex space-bw wrap">
-            <div className="form-group width-content d-flex y-center gap-1">
-              <input
-                type="checkbox"
-                className="form-input"
-                id="declaration"
-                required
-              />
-              <label
-                className="form-label txt-sm d-inline-block"
-                htmlFor="declaration"
-              >
-                I accept all Terms and Conditions
-              </label>
-            </div>
+          <div className="form-group width-content d-flex y-center gap-1">
+            <input
+              type="checkbox"
+              className="form-input"
+              id="declaration"
+              required
+            />
+            <label
+              className="form-label txt-bold txt-sm d-inline-block"
+              htmlFor="declaration"
+            >
+              I accept all Terms and Conditions
+            </label>
           </div>
 
           <FormButton
             btnText={"Create New Account"}
             btnClickHandler={signupHandler}
+            btnType="btn-primary"
           />
 
           <div>
-            <span>Already have an account ?</span>
-            <Link to={"/login"} className="btn btn-link btn-link-primary">
+            <span className="txt-bold">Already have an account ?</span>
+            <Link
+              to={"/login"}
+              className="btn txt-bold btn-link btn-link-primary"
+            >
               Login Here
             </Link>
           </div>
         </FormContainer>
+        {loader && <Loader />}
       </section>
     </>
   );
