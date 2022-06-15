@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useState, useReducer } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
 import {
-  Navbar,
   FormContainer,
   FormInput,
   FormButton,
   PasswordInput,
+  Loader,
 } from "../../../components";
 import { loginFormValidation } from "./loginFormValidation";
 import { useDocumentTitle } from "../../../custom-hooks";
@@ -34,13 +35,35 @@ const Login = () => {
   const { authDispatch } = useAuth();
 
   const [apiError, setApiError] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from.pathname || "/";
 
   const loginHandler = async (event) => {
     event.preventDefault();
 
     if (loginFormValidation(loginForm, loginFormErrorDispatch)) {
+      setLoader(true);
+      try {
+        const response = await axios.post("/api/auth/login", loginForm);
+
+        if (response?.status === 200) {
+          toast.success("Successfully logged in!");
+          const { encodedToken: authToken, firstName: userName } =
+            response?.data;
+          authDispatch({
+            type: authActions.SAVE_USER_DETAILS,
+            payload: { authToken, isUserLoggedIn: true, userName },
+          });
+          setLoader(false);
+          navigate(from, { replace: true });
+        }
+      } catch (err) {
+        setApiError("Invalid Credentials");
+        setLoader(false);
+      }
     }
   };
 
@@ -105,25 +128,34 @@ const Login = () => {
                 Remember Me
               </label>
             </div>
-            <Link to={"#"} className="mb-1 txt-sm d-inline-block txt-primary">
+            <Link
+              to={"#"}
+              className="mb-1 txt-bold txt-sm d-inline-block txt-primary"
+            >
               Forgot your password?
             </Link>
           </div>
 
           <FormButton
-            btnText={"Guest Login"}
-            btnClickHandler={guestLoginHandler}
+            btnText={"Login"}
+            btnClickHandler={loginHandler}
+            btnType={"btn-primary"}
           />
 
-          <FormButton btnText={"Login"} btnClickHandler={loginHandler} />
+          <FormButton
+            btnText={"Guest Login"}
+            btnClickHandler={guestLoginHandler}
+            btnType={"btn-primary-outline"}
+          />
 
           <div>
-            <span>Not a user yet ?</span>
+            <span className="txt-bold">Not a user yet ?</span>
             <Link to={"/signup"} className="btn btn-link btn-link-primary">
               Create New Account
             </Link>
           </div>
         </FormContainer>
+        {loader && <Loader />}
       </section>
     </>
   );

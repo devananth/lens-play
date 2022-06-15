@@ -2,12 +2,9 @@
 @import url("https://use.fontawesome.com/releases/v5.12.1/css/all.css");
 
 :root{
-    --light-theme-bg-color: #e5e5e5;
-    --light-theme-navbar-bg-color: #fff;
-    --dark-theme-bg-color: #282827;
-    --dark-theme-navbar-bg-color: #111;
+    --light-theme-bg-color: rgb(255 255 255 / 98%);
+    --light-theme-navbar-bg-color: rgb(255 255 255 / 98%);
     --light-theme-text-color: #282827;
-    --dark-theme-text-color: #fff;
     --overlay-text-color: rgba(40,66,88,0.10196078431372549);
     --overlay-bg-color: rgba(0,0,0,0.3);
     --text-color: #282827;
