@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./contexts";
+import { AuthProvider, CategoryProvider } from "./contexts";
 import App from "./App";
 import { makeServer } from "./server";
 
@@ -11,9 +11,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <CategoryProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </CategoryProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
