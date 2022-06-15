@@ -58,6 +58,7 @@ const SignUp = () => {
         const response = await axios.post("/api/auth/signup", signupForm);
 
         if (response?.status === 201) {
+          toast.success("Logged in");
           const { encodedToken: authToken, firstName: userName } =
             response?.data;
           authDispatch({
