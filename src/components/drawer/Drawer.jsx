@@ -6,7 +6,7 @@ const drawerOptions = [
   {
     id: uuid(),
     icon: "far fa-compass",
-    path: "/explore",
+    path: "/",
     text: "Explore",
   },
   {
