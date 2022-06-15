@@ -1,0 +1,30 @@
+.video__card {
+    max-width: 15rem;
+    height: min-content;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  .video__content {
+    padding: 5px;
+  }
+  
+  .img-responsive {
+    width: 100%;
+    object-fit: contain;
+    /* aspect-ratio: 1/1; */
+    height: auto;
+  }
+  
+  .avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .video__title {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    font-weight: 700;
+  }
