@@ -1,24 +1,47 @@
 import { v4 as uuid } from "uuid";
+import { useState } from "react";
 import { useDocumentTitle } from "../custom-hooks";
 import { Navbar, Drawer, Loader, Chips, VideoCard } from "../components";
-import { useCategory } from "../contexts";
-import { getSelectedCategoryVideos } from "../utils";
-import { videos } from "../backend/db/videos";
+import { useCategory, useVideos } from "../contexts";
+import { getSelectedCategoryVideos, getSortedVideos } from "../utils";
 
 const Explore = () => {
   useDocumentTitle("Explore | Lens-Play");
 
-  const { categories, loader, selectedCategory, setSelectedCategory } =
-    useCategory();
+  const [sortByDropdown, setSortByDropdowm] = useState(false);
 
-  const filteredVideos = getSelectedCategoryVideos(selectedCategory, videos);
+  const {
+    categories,
+    loader: categoryLoader,
+    selectedCategory,
+    setSelectedCategory,
+  } = useCategory();
+
+  const { videoState, setVideoState, loader: videoLoader } = useVideos();
+
+  const { videos, sortBy } = videoState;
+
+  const filteredVideos = categories
+    ? getSortedVideos(
+        getSelectedCategoryVideos(selectedCategory, videos),
+        sortBy
+      )
+    : [];
+
+  const sortByHandler = (type) => {
+    if (type === "latest") {
+      setVideoState((prevState) => ({ ...prevState, sortBy: "Latest Date" }));
+    } else {
+      setVideoState((prevState) => ({ ...prevState, sortBy: "Oldest Date" }));
+    }
+  };
 
   return (
     <>
       <main className="main__container">
         <Drawer />
-        <section className="ml-1">
-          {loader ? (
+        <section className="">
+          {categoryLoader || videoLoader ? (
             <Loader />
           ) : (
             <div className="category__container m-1">
@@ -34,6 +57,23 @@ const Explore = () => {
               )}
             </div>
           )}
+
+          <div class="sort__filter cursor-ptr">
+            <span onClick={() => setSortByDropdowm((prevState) => !prevState)}>
+              <i class="fas fa-filter"></i> Sort By
+            </span>
+            {sortByDropdown && (
+              <ul class="sort__dropdown">
+                <li onClick={() => sortByHandler("latest")}>
+                  Latest uploaded date
+                </li>
+                <li onClick={() => sortByHandler("oldest")}>
+                  Oldest uploaded date
+                </li>
+              </ul>
+            )}
+          </div>
+
           <div className="grid-autofill-layout">
             {filteredVideos &&
               filteredVideos.map((video) => (
