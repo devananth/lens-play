@@ -1,8 +1,11 @@
 .video__card {
     max-width: 18rem;
     height: min-content;
-    border: 1px solid black;
     border-radius: 5px;
+  }
+
+  .video__card:hover{
+    box-shadow: var(--box-shadow-2);
   }
   
   .video__content {
