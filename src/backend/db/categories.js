@@ -8,20 +8,20 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    categoryName: "HTML",
     description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+      "HTML is a markup language.It is mainly used to structure the web pages.",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    categoryName: "Javascript",
     description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+      "Javascript is a programming language used in both frontend and backend while building a website or web applications.",
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    categoryName: "React",
     description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+      "React is a frontend library developed by facebook.It is mainly used to create single page web applications.",
   },
 ];

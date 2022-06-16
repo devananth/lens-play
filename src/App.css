@@ -32,6 +32,75 @@ body{
     width: 100%;
 }
 
+.main__container{
+    display : grid;
+    grid-template-columns: min-content 1fr;
+    grid-gap : 2rem;
+}
+
+.grid-autofill-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 2rem;
+    grid-template-rows: min-content;
+    place-items: center;
+  }
+
 .authentication__wrapper{
     min-height: calc(100vh - 4rem);
+}
+
+.category__container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    height : min-content;
+   
+    margin-top:2rem;
+}
+
+.sort__filter {
+    display: inline-block;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size : 1.5rem;
+    position: relative;
+    margin : 1rem;
+    margin-bottom: 3rem;
+}
+  
+
+  
+.sort__dropdown {
+    position: absolute;
+    top: 90%;
+    left : 20%;
+    z-index: 999;
+    background-color: var(--light-theme-bg-color);
+    width : max-content;
+    border : 1px solid var(--primary-color);
+   
+}
+
+.sort__dropdown li{
+    font-size: 1rem;
+    border-bottom : 1px solid var(--primary-color);
+    padding : 3px 7px;
+}
+
+.sort__dropdown li:hover{
+    background-color: var(--primary-active-color);
+    color : var(--white-color)
+}
+
+.sort__dropdown li:last-child{
+    border : none;
+}
+
+
+@media  screen and (max-width : 458px) {
+    .main__container{
+        grid-template-columns: 1fr;
+    }
 }
