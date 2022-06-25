@@ -1,17 +1,32 @@
 import { useDocumentTitle } from "../custom-hooks";
-import { Navbar, Drawer } from "../components";
+import { Drawer } from "../components";
+import { usePlaylists } from "../contexts";
+import { PlaylistCard } from "../components";
 
-const Playlist = () => {
-  useDocumentTitle("Playlist | Lens-Play");
+const Playlists = () => {
+  useDocumentTitle("Playlists | Lens-Play");
+
+  const { playlists } = usePlaylists();
 
   return (
     <>
-      <main className="d-flex">
+      <main className="main__container">
         <Drawer />
-        <h5>My Playlist (2)</h5>
+        <section>
+          <h5 className="my-1">My Playlists</h5>
+          <div className="grid-autofill-layout">
+            {playlists.length > 0 ? (
+              playlists.map((playlist) => (
+                <PlaylistCard key={playlist._id} playlist={playlist} />
+              ))
+            ) : (
+              <h3>No playlist found...</h3>
+            )}
+          </div>
+        </section>
       </main>
     </>
   );
 };
 
-export { Playlist };
+export { Playlists };
