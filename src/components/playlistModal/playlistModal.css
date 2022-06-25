@@ -1,10 +1,7 @@
 .modal__wrapper{
     background-color: var(--overlay-color);
     position: fixed;
-    top : 0;
-    left : 0;
-    right : 0;
-    bottom : 0;
+    inset : 0;
     display : grid;
     place-items: center;
     z-index: 9;
