@@ -1,12 +1,9 @@
 .video__card {
     max-width: 18rem;
     height: min-content;
-    border-radius: 5px;
+    position: relative;
   }
 
-  .video__card:hover{
-    box-shadow: var(--box-shadow-2);
-  }
   
   .video__content {
     padding: 5px;
@@ -30,3 +27,28 @@
     overflow: hidden;
     font-weight: 700;
   }
+
+  .options__dropdown{
+    position : absolute;
+    background-color: black;
+    color: white;
+    z-index : 9;
+    top : 50%;
+    right: 10%;
+    cursor: pointer;
+    padding : 2px;
+    max-width: 25ch;
+  }
+
+  .options__dropdown > li{
+    padding : 5px;
+    display: flex;
+    align-items: center;
+    gap : 1rem;
+  }
+
+  .options__dropdown > li:hover{
+    font-weight: bold;
+  }
+
+ 
