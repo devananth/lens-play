@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useLikes } from "../../contexts";
+import {
+  useAuth,
+  useLikes,
+  useWatchLater,
+  useModal,
+  usePlaylists,
+} from "../../contexts";
 import { isVideoInArray } from "../../utils";
 import "./videoCard.css";
 
@@ -20,7 +26,16 @@ const VideoCard = (props) => {
 
   const [showOptionsDropdown, setShowOptionsDropdown] = useState(false);
 
+  const { setShowModal } = useModal();
   const { likes, addToLikesServerCall, removeFromLikesServerCall } = useLikes();
+  const {
+    watchLater,
+    addToWatchLaterServerCall,
+    removeFromWatchLaterServerCall,
+  } = useWatchLater();
+
+  const { setvideoToAddInPlaylist } = usePlaylists();
+
   const {
     authState: { isUserLoggedIn },
   } = useAuth();
@@ -28,14 +43,33 @@ const VideoCard = (props) => {
   const navigate = useNavigate();
 
   const isVideoLiked = isVideoInArray(likes, video);
-  const isVideoInWatchLater = false;
+  const isVideoInWatchLater = isVideoInArray(watchLater, video);
 
-  const likeHandler = () =>
+  const watchLaterHandler = () => {
+    isUserLoggedIn
+      ? isVideoInWatchLater
+        ? removeFromWatchLaterServerCall(video)
+        : addToWatchLaterServerCall(video)
+      : navigate("/login");
+  };
+
+  const likeHandler = () => {
     isUserLoggedIn
       ? isVideoLiked
         ? removeFromLikesServerCall(video)
         : addToLikesServerCall(video)
       : navigate("/login");
+  };
+
+  const playlistHandler = () => {
+    if (isUserLoggedIn) {
+      setvideoToAddInPlaylist(video);
+      setShowModal(true);
+      setShowOptionsDropdown(false);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="video__card">
@@ -67,25 +101,29 @@ const VideoCard = (props) => {
       </div>
       {showOptionsDropdown && (
         <ul className="options__dropdown">
-          {isVideoLiked ? (
-            <li onClick={likeHandler}>
-              <i className="fas fa-heart"></i>Remove from likes
-            </li>
-          ) : (
-            <li onClick={likeHandler}>
-              <i className="far fa-heart"></i>Add to likes
-            </li>
-          )}
-          {isVideoInWatchLater ? (
-            <li>
-              <i className="fas fa-clock"></i>Remove from watch Later
-            </li>
-          ) : (
-            <li>
-              <i className="far fa-clock"></i>Add to Watch Later
-            </li>
-          )}
-          <li>
+          <li onClick={likeHandler}>
+            {isVideoLiked ? (
+              <>
+                <i className="fas fa-heart"></i>Remove from likes
+              </>
+            ) : (
+              <>
+                <i className="far fa-heart"></i>Add to likes
+              </>
+            )}
+          </li>
+          <li onClick={watchLaterHandler}>
+            {isVideoInWatchLater ? (
+              <>
+                <i className="fas fa-clock"></i>Remove from watch Later
+              </>
+            ) : (
+              <>
+                <i className="far fa-clock"></i>Add to Watch Later
+              </>
+            )}
+          </li>
+          <li onClick={playlistHandler}>
             <i className="fas fa-plus"></i>Save to playlist
           </li>
         </ul>
