@@ -7,6 +7,10 @@
     font-weight: bold;
 }
 
+.nav__search__container.mobile__search{
+    display : none;
+}
+
 @media  screen and (max-width : 768px) {
     
 

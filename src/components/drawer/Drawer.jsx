@@ -24,7 +24,7 @@ const drawerOptions = [
   {
     id: uuid(),
     icon: "far fa-play-circle",
-    path: "/playlist",
+    path: "/playlists",
     text: "Playlists",
   },
   {

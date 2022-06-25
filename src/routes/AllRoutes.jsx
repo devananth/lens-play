@@ -1,13 +1,15 @@
 import { Routes, Route } from "react-router-dom";
+import { MockApi } from "../components";
 import {
   Home,
   Explore,
   Liked,
-  Playlist,
+  Playlists,
   WatchLater,
   Login,
   SignUp,
   History,
+  PlaylistDetails,
 } from "../pages";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 
@@ -17,7 +19,8 @@ const AllRoutes = () => {
       <Route path="/" element={<Explore />} />
       <Route path="/" element={<ProtectedRoutes />}>
         <Route path="/liked" element={<Liked />} />
-        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/playlists" element={<Playlists />} />
+        <Route path="/playlists/:id" element={<PlaylistDetails />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/history" element={<History />} />
       </Route>
