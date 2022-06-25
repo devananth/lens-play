@@ -1,0 +1,50 @@
+.modal__wrapper{
+    background-color: var(--overlay-color);
+    position: fixed;
+    top : 0;
+    left : 0;
+    right : 0;
+    bottom : 0;
+    display : grid;
+    place-items: center;
+    z-index: 9;
+}
+
+.modal__content{
+    background-color: black;
+    max-width: 20rem;
+    width : 100%;
+    min-height: 8rem;
+    max-height: 20rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding : 0.5rem 0.8rem;
+    color : white;
+    font-size: 1.5rem;
+    gap : 1rem;
+}
+
+.modal__header , .modal__body{
+    border-bottom : 1px solid white;
+}
+
+.modal__body{
+    overflow-y: auto;
+}
+
+.modal__body label{
+    cursor: pointer;
+}
+
+.modal__footer .btn-primary{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    gap : 0.5rem;
+}
+
+.modal__footer .btn-primary:hover{
+    background-color: var(--primary-active-color);
+}
