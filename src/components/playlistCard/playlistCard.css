@@ -1,0 +1,26 @@
+.playlist__card__wrapper {
+    width: 18rem;
+    height: min-content;
+    position: relative;
+}
+
+.playlist__card__img__container{
+    position: relative;
+    height: fit-content;
+    display: block;
+}
+  
+.playlist__card__overlay {
+    background-color: rgb(74, 74, 75);
+    opacity: 0.5;
+    width: 40%;
+    height: 98%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 3rem;
+}
+

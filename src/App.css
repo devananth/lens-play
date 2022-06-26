@@ -38,6 +38,10 @@ body{
     grid-gap : 2rem;
 }
 
+.main__section--header{
+    height: 2rem;
+}
+
 .grid-autofill-layout {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));

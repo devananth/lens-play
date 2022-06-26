@@ -58,12 +58,12 @@ const Explore = () => {
             </div>
           )}
 
-          <div class="sort__filter cursor-ptr">
+          <div className="sort__filter cursor-ptr">
             <span onClick={() => setSortByDropdowm((prevState) => !prevState)}>
-              <i class="fas fa-filter"></i> Sort By
+              <i className="fas fa-filter"></i> Sort By
             </span>
             {sortByDropdown && (
-              <ul class="sort__dropdown">
+              <ul className="sort__dropdown">
                 <li onClick={() => sortByHandler("latest")}>
                   Latest uploaded date
                 </li>

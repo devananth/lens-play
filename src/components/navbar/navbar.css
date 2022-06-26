@@ -36,9 +36,6 @@
     color : var(--primary-color);
 }
 
-.mobile__search{
-    display: none;
-}
 
 
 @media  screen and (max-width : 468px) {

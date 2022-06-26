@@ -11,3 +11,9 @@ export { Loader } from "./loader/Loader";
 export { Chips } from "./chips/Chips";
 
 export { VideoCard } from "./videoCard/VideoCard";
+
+export { PlaylistModal } from "./playlistModal/PlaylistModal";
+
+export { PlaylistCard } from "./playlistCard/PlaylistCard";
+
+export { MockApi } from "./mockman/Mockman";
