@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useAuth,
   useLikes,
@@ -7,6 +7,7 @@ import {
   useModal,
   usePlaylists,
 } from "../../contexts";
+import { useVideoHandlers } from "../../custom-hooks";
 import { isVideoInArray } from "../../utils";
 import "./videoCard.css";
 
@@ -20,60 +21,34 @@ const VideoCard = (props) => {
     thumbnail,
     description,
     uploadedDate,
+    youtubeID,
+    views,
   } = props;
 
   const [video] = [props];
 
   const [showOptionsDropdown, setShowOptionsDropdown] = useState(false);
 
-  const { setShowModal } = useModal();
-  const { likes, addToLikesServerCall, removeFromLikesServerCall } = useLikes();
   const {
-    watchLater,
-    addToWatchLaterServerCall,
-    removeFromWatchLaterServerCall,
-  } = useWatchLater();
+    likeHandler,
+    playlistHandler,
+    watchLaterHandler,
+    isVideoLiked,
+    isVideoInWatchLater,
+    isVideoInHistory,
+    historyHandler,
+  } = useVideoHandlers(video);
 
-  const { setvideoToAddInPlaylist } = usePlaylists();
-
-  const {
-    authState: { isUserLoggedIn },
-  } = useAuth();
+  const location = useLocation();
 
   const navigate = useNavigate();
 
-  const isVideoLiked = isVideoInArray(likes, video);
-  const isVideoInWatchLater = isVideoInArray(watchLater, video);
-
-  const watchLaterHandler = () => {
-    isUserLoggedIn
-      ? isVideoInWatchLater
-        ? removeFromWatchLaterServerCall(video)
-        : addToWatchLaterServerCall(video)
-      : navigate("/login");
-  };
-
-  const likeHandler = () => {
-    isUserLoggedIn
-      ? isVideoLiked
-        ? removeFromLikesServerCall(video)
-        : addToLikesServerCall(video)
-      : navigate("/login");
-  };
-
-  const playlistHandler = () => {
-    if (isUserLoggedIn) {
-      setvideoToAddInPlaylist(video);
-      setShowModal(true);
-      setShowOptionsDropdown(false);
-    } else {
-      navigate("/login");
-    }
-  };
-
   return (
     <div className="video__card">
-      <div className="thumbnail__wrapper">
+      <div
+        className="thumbnail__wrapper cursor-ptr"
+        onClick={() => navigate(`/video/${youtubeID}`)}
+      >
         <img className="img-responsive" src={thumbnail} alt={title} />
       </div>
       <div className="video__content d-flex space-bw gap-1">
@@ -88,7 +63,7 @@ const VideoCard = (props) => {
             <span className="video__title">{title}</span>
             <div className="d-flex col txt-sm">
               <span>
-                9M views | {new Date(uploadedDate).toDateString().slice(4)}
+                {views} | {new Date(uploadedDate).toDateString().slice(4)}
               </span>
               <span>{creator}</span>
             </div>
@@ -101,6 +76,15 @@ const VideoCard = (props) => {
       </div>
       {showOptionsDropdown && (
         <ul className="options__dropdown">
+          {isVideoInHistory && location.pathname === "/history" && (
+            <li onClick={historyHandler} className="danger">
+              {
+                <>
+                  <i className="fas fa-trash"></i>Remove from history
+                </>
+              }
+            </li>
+          )}
           <li onClick={likeHandler}>
             {isVideoLiked ? (
               <>
@@ -123,7 +107,12 @@ const VideoCard = (props) => {
               </>
             )}
           </li>
-          <li onClick={playlistHandler}>
+          <li
+            onClick={(e) => {
+              setShowOptionsDropdown(false);
+              playlistHandler(e);
+            }}
+          >
             <i className="fas fa-plus"></i>Save to playlist
           </li>
         </ul>
