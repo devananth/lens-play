@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDocumentTitle } from "../custom-hooks";
 import { Navbar, Drawer, Loader, Chips, VideoCard } from "../components";
 import { useCategory, useVideos } from "../contexts";
@@ -40,7 +40,7 @@ const Explore = () => {
     <>
       <main className="main__container">
         <Drawer />
-        <section className="">
+        <section>
           {categoryLoader || videoLoader ? (
             <Loader />
           ) : (

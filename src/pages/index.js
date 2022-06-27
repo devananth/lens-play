@@ -15,3 +15,7 @@ export { Login } from "./Authentication/Login/login";
 export { SignUp } from "./Authentication/SignUp/SignUp";
 
 export { PlaylistDetails } from "./PlaylistDetails";
+
+export { VideoDetails } from "./videoDetails/VideosDetails";
+
+export { PageNotFound } from "./PageNotFound";
