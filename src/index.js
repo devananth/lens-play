@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import {
   AuthProvider,
   CategoryProvider,
+  HistoryProvider,
   LikesProvider,
   ModalProvider,
   PlaylistProvider,
@@ -23,13 +24,15 @@ ReactDOM.render(
         <CategoryProvider>
           <VideoProvider>
             <AuthProvider>
-              <PlaylistProvider>
-                <LikesProvider>
-                  <WatchLaterProvider>
-                    <App />
-                  </WatchLaterProvider>
-                </LikesProvider>
-              </PlaylistProvider>
+              <HistoryProvider>
+                <PlaylistProvider>
+                  <LikesProvider>
+                    <WatchLaterProvider>
+                      <App />
+                    </WatchLaterProvider>
+                  </LikesProvider>
+                </PlaylistProvider>
+              </HistoryProvider>
             </AuthProvider>
           </VideoProvider>
         </CategoryProvider>

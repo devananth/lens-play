@@ -8,6 +8,7 @@ import { v4 as uuid } from "uuid";
 export const videos = [
   {
     _id: uuid(),
+    youtubeID: "qz0aGYrrlhU",
     title: "HTML Tutorial for Beginners: HTML Crash Course",
     categoryName: "HTML",
     creator: "Programming with Mosh",
@@ -22,6 +23,7 @@ export const videos = [
 
   {
     _id: uuid(),
+    youtubeID: "R8rmfD9Y5-c",
     title: "8 Must Know JavaScript Array Methods",
     categoryName: "Javascript",
     creator: "Web Dev Simplified",
@@ -36,6 +38,7 @@ export const videos = [
   },
   {
     _id: uuid(),
+    youtubeID: "pQN-pnXPaVg",
     title: "HTML Full Course - Build a Website Tutorial",
     categoryName: "HTML",
     creator: "freeCodeCamp.org",
@@ -50,6 +53,7 @@ export const videos = [
   },
   {
     _id: uuid(),
+    youtubeID: "Ke90Tje7VS0",
     title: "React JS - React Tutorial for Beginners",
     categoryName: "React",
     creator: "Programming with Mosh",
@@ -65,6 +69,7 @@ export const videos = [
 
   {
     _id: uuid(),
+    youtubeID: "PkZNo7MFNFg",
     title: "Learn JavaScript - Full Course for Beginners",
     categoryName: "Javascript",
     creator: "freeCodeCamp.org",
@@ -79,6 +84,7 @@ export const videos = [
   },
   {
     _id: uuid(),
+    youtubeID: "bMknfKXIFA8",
     title:
       "React Course - Beginner's Tutorial for React JavaScript Library [2022]",
     categoryName: "React",
@@ -95,6 +101,7 @@ export const videos = [
 
   {
     _id: uuid(),
+    youtubeID: "fNcJuPIZ2WE",
     title: "Learn HTML Forms In 25 Minutes",
     categoryName: "HTML",
     creator: "Web Dev Simplified",
@@ -110,6 +117,7 @@ export const videos = [
 
   {
     _id: uuid(),
+    youtubeID: "1PnVor36_40",
     title: "Learn CSS in 20 Minutes",
     categoryName: "CSS",
     creator: "Web Dev Simplified",
@@ -124,6 +132,7 @@ export const videos = [
   },
   {
     _id: uuid(),
+    youtubeID: "W6NZfCO5SIk",
     title: "JavaScript Tutorial for Beginners: Learn JavaScript in 1 Hour",
     categoryName: "Javascript",
     creator: "Programming with Mosh",
@@ -138,6 +147,7 @@ export const videos = [
   },
   {
     _id: uuid(),
+    youtubeID: "ieTHC78giGQ",
     title: "CSS Full Course - Includes Flexbox and CSS Grid Tutorials",
     categoryName: "CSS",
     creator: "freeCodeCamp.org",

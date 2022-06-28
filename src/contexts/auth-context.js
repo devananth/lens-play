@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { authReducer, authActions } from "../reducers";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const initialAuthState = {
   authToken: null,
@@ -18,6 +18,9 @@ const AuthProvider = ({ children }) => {
   const value = { authState, authDispatch };
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.pathname || "/";
 
   useEffect(() => {
     const userDetails = JSON.parse(localStorage.getItem("userDetails"));
@@ -27,7 +30,7 @@ const AuthProvider = ({ children }) => {
         type: authActions.SAVE_USER_DETAILS,
         payload: userDetails,
       });
-      navigate("/");
+      navigate(from);
     }
   }, []);
 

@@ -4,6 +4,7 @@
     overflow: auto;
     background-color: var(--light-theme-navbar-bg-color);
     border-right : 1px solid var(--light-theme-divider-color);
+    z-index: 5;
 }
 
 .drawer__options{

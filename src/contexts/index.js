@@ -11,3 +11,5 @@ export { useWatchLater, WatchLaterProvider } from "./watchLater-context";
 export { useModal, ModalProvider } from "./modal-context";
 
 export { usePlaylists, PlaylistProvider } from "./playlist-context";
+
+export { useHistory, HistoryProvider } from "./history-context";

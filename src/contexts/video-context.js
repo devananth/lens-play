@@ -22,10 +22,12 @@ const VideoProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    setVideoState((prevState) => ({
-      ...prevState,
-      videos: response?.data?.videos,
-    }));
+    if (response) {
+      setVideoState((prevState) => ({
+        ...prevState,
+        videos: response?.data?.videos,
+      }));
+    }
   }, [response]);
 
   const { Provider } = VideoContext;

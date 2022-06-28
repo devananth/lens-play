@@ -1,0 +1,30 @@
+
+.player__wrapper{
+    height : 30rem;
+}
+
+.player__wrapper iframe{
+    height : 100%;
+}
+
+.video__options li i{
+    margin-right: 5px;
+}
+
+.video__options li:hover{
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.Video__content--footer{
+    padding : 1rem 0;
+    border-bottom: 1px solid black;
+}
+
+@media screen and (max-width : 458px) {
+
+    .player__wrapper{
+        height: 20rem;
+    } 
+    
+}

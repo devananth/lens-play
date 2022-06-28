@@ -16,4 +16,8 @@ export { PlaylistModal } from "./playlistModal/PlaylistModal";
 
 export { PlaylistCard } from "./playlistCard/PlaylistCard";
 
+export { SingleVideo } from "./singleVideo/SingleVideo";
+
+export { NotFound } from "./404/NotFound";
+
 export { MockApi } from "./mockman/Mockman";
