@@ -28,12 +28,6 @@ const Navbar = () => {
         </div>
         <SearchBar />
         <div className="nav__links__wrapper">
-          <NavLink className="nav__link hide__mobile" to="/">
-            Home
-          </NavLink>
-          <NavLink className="nav__link hide__mobile" to="/">
-            Explore
-          </NavLink>
           {isUserLoggedIn ? (
             <NavLink to="/">
               <button className="btn btn-primary" onClick={logoutHandler}>

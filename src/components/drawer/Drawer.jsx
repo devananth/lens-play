@@ -35,10 +35,19 @@ const drawerOptions = [
   },
 ];
 
+const activeStyle = ({ isActive }) => {
+  return isActive
+    ? {
+        color: "var(--primary-color)",
+        backgroundColor: "hsla(0,0%,89.8%,.6)",
+      }
+    : {};
+};
+
 const DrawerItem = ({ id, icon, text, path }) => {
   return (
     <li className="drawer__options">
-      <NavLink to={path}>
+      <NavLink to={path} style={activeStyle}>
         <span className="drawer__icon">
           <i className={icon} aria-hidden="true"></i>
         </span>
