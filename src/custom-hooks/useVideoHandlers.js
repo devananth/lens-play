@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   useAuth,
   useLikes,
@@ -9,6 +10,8 @@ import {
 import { isVideoInArray } from "../utils";
 
 const useVideoHandlers = (video) => {
+  const navigate = useNavigate();
+
   const {
     authState: { isUserLoggedIn },
   } = useAuth();
