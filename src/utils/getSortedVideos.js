@@ -1,4 +1,4 @@
-export const getSortedVideos = (videosArr, sortBy) => {
+export const getSortedVideos = (sortBy, videosArr) => {
   if (sortBy === "Latest Date") {
     return [...videosArr].sort(
       (video1, video2) =>
