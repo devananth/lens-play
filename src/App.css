@@ -2,26 +2,27 @@
 @import url("https://use.fontawesome.com/releases/v5.12.1/css/all.css");
 
 :root{
-    --light-theme-bg-color: rgb(255 255 255 / 98%);
-    --light-theme-navbar-bg-color: rgb(255 255 255 / 98%);
-    --light-theme-text-color: #282827;
-    --overlay-text-color: rgba(40,66,88,0.10196078431372549);
-    --overlay-bg-color: rgba(0,0,0,0.3);
-    --text-color: #282827;
-    --text-active-color: rgba(40,40,39,0.7450980392156863);
-    --primary-color: #e50048;
-    --primary-active-color: #c90039;
-    --primary-bg-color: #ffbfd2;
-    --light-theme-divider-color : #dbdbdb;
-    --dark-them-divider-color : #3c3c3c;
+    --nav-background-color : rgb(255 255 255 / 98%);
+    --nav-background-hover-color : hsla(0,0%,89.8%,.6);
+    --background-color : #f9f9f9;
+    --text-color : #282827;
+    --primary-color: #ef4343 ;
+}
+
+body[data-theme="dark"]{
+    --nav-background-color : #000000;
+    --nav-background-hover-color : #272727;
+    --background-color : #292524 ;
+    --text-color : #ffffff;
+    --primary-color: #ef4343 ;
 }
 
 body{
     font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-    background-color: var(--light-theme-bg-color);
-    color : var(--light-theme-text-color);
+    background-color: var(--background-color);
+    color : var(--text-color);
 }
 
 .cursor-ptr{
@@ -33,10 +34,15 @@ body{
 }
 
 .main__container{
-    display : grid;
-    grid-template-columns: min-content 1fr;
-    grid-gap : 2rem;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+.main__content{
+    margin : 1rem;
+    margin-left: 18rem;
+    width: calc(100% - 18rem);
+    overflow: auto;
+
 }
 
 .main__section--header{
@@ -72,7 +78,6 @@ body{
     font-size : 1.5rem;
     position: relative;
     margin : 1rem;
-    margin-bottom: 3rem;
 }
   
 
@@ -82,30 +87,35 @@ body{
     top: 90%;
     left : 20%;
     z-index: 999;
-    background-color: var(--light-theme-bg-color);
-    width : max-content;
-    border : 1px solid var(--primary-color);
-   
+    background-color: var(--nav-background-color);
+    color : var(--text-color);
+    width : max-content;   
 }
 
 .sort__dropdown li{
     font-size: 1rem;
-    border-bottom : 1px solid var(--primary-color);
-    padding : 3px 7px;
+    padding : 5px 7px;
 }
 
 .sort__dropdown li:hover{
-    background-color: var(--primary-active-color);
-    color : var(--white-color)
+    background-color: var(--nav-background-hover-color);
 }
 
 .sort__dropdown li:last-child{
     border : none;
 }
 
+@media screen and (max-width : 768px){
+    .main__content{
+    margin-left : 6rem;
+    width: calc(100% - 6rem);
+    }
+}
+
 
 @media  screen and (max-width : 458px) {
-    .main__container{
-        grid-template-columns: 1fr;
-    }
+    .main__content{
+        margin: 1rem;
+        width: 100%;
+        }
 }
