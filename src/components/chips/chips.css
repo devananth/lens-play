@@ -3,11 +3,12 @@
     padding : 8px;
     border : 2px solid var(--primary-color);
     border-radius: 2rem;
+    color : var(--text-color);
 }
 
 .chip.active,
 .chip:hover{
     background-color: var(--primary-color);
-    color : var(--white-color);
+    color : var(--nav-background-color);
 }
 

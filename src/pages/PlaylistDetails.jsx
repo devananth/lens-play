@@ -26,7 +26,7 @@ const PlaylistDetails = () => {
     <>
       <main className="main__container">
         <Drawer />
-        <section>
+        <section className="main__content">
           <div className="d-flex space-bw align-center m-1 main__section--header">
             <h5 className="txt-bold">{title}</h5>
             <button className="btn btn-secondary" onClick={deleteHandler}>

@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth } from "../../contexts";
+import { useAuth, useTheme } from "../../contexts";
 import { authActions } from "../../reducers";
 import "./navbar.css";
 import { SearchBar } from "../index";
@@ -10,6 +10,8 @@ const Navbar = () => {
     authState: { isUserLoggedIn },
     authDispatch,
   } = useAuth();
+
+  const { theme, changeTheme } = useTheme();
 
   const logoutHandler = () => {
     authDispatch({
@@ -28,6 +30,11 @@ const Navbar = () => {
         </div>
         <SearchBar />
         <div className="nav__links__wrapper">
+          {theme === "light" ? (
+            <i className="fas fa-moon theme__icon" onClick={changeTheme}></i>
+          ) : (
+            <i className="fas fa-sun theme__icon" onClick={changeTheme}></i>
+          )}
           {isUserLoggedIn ? (
             <NavLink to="/">
               <button className="btn btn-primary" onClick={logoutHandler}>

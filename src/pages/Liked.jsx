@@ -11,7 +11,7 @@ const Liked = () => {
     <>
       <main className="main__container">
         <Drawer />
-        <section>
+        <section className="main__content">
           <div className="mt-1">
             <h3 className="txt-bold m-sm">Liked Videos</h3>
           </div>

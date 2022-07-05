@@ -29,6 +29,7 @@ const AllRoutes = () => {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/mockman" element={<MockApi />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

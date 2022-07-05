@@ -2,9 +2,12 @@
     width : 16rem;
     height: 90vh;
     overflow: auto;
-    background-color: var(--light-theme-navbar-bg-color);
-    border-right : 1px solid var(--light-theme-divider-color);
+    background-color: var(--nav-background-color);
+    /* border-right : 1px solid var(--light-theme-divider-color); */
     z-index: 5;
+    position: fixed;
+    left: 0;
+    top: 5.4rem;
 }
 
 .drawer__options{
@@ -29,8 +32,7 @@
 }
 
 .drawer__options:hover{
-    color : var(--primary-color);
-    background-color: hsla(0,0%,89.8%,.6);
+    background-color: var(--nav-background-hover-color);
 }
 
 
@@ -42,6 +44,14 @@
 
     .drawer__options .drawer__text{
         display: none;
+    }
+    
+}
+
+@media screen and (max-width : 768px) {
+
+    .drawer__wrapper{
+        top : 8rem;
     }
     
 }
