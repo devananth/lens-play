@@ -13,3 +13,5 @@ export { useModal, ModalProvider } from "./modal-context";
 export { usePlaylists, PlaylistProvider } from "./playlist-context";
 
 export { useHistory, HistoryProvider } from "./history-context";
+
+export { useTheme, ThemeProvider } from "./theme-context";

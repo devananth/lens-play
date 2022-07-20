@@ -38,8 +38,8 @@ const drawerOptions = [
 const activeStyle = ({ isActive }) => {
   return isActive
     ? {
-        color: "var(--primary-color)",
-        backgroundColor: "hsla(0,0%,89.8%,.6)",
+        // color: "var(--primary-color)",
+        backgroundColor: "var(--nav-background-hover-color)",
       }
     : {};
 };

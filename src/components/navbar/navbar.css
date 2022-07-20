@@ -1,9 +1,12 @@
 .header{
-    background-color: var(--light-theme-navbar-bg-color);
+    background-color: var(--nav-background-color);
     border-bottom: 1px solid var(----light-theme-divider-color);
     height : fit-content;
     padding-bottom: 8px;
     box-shadow: var(--box-shadow-2);
+    position: sticky;
+    top: 0;
+    z-index: 9;
 }
 
 .nav__wrapper{
@@ -11,7 +14,6 @@
     align-items: center;
     justify-content: space-between;
     padding : 1rem 2rem;
-
 }
 
 .nav__links__wrapper{
@@ -31,8 +33,14 @@
     font-size : 1.75rem;
 }
 
+.theme__icon{
+    font-size: 2rem;
+}
+
+
 .icon:hover,
-.nav__link:hover{
+.nav__link:hover,
+.theme__icon:hover{
     color : var(--primary-color);
 }
 

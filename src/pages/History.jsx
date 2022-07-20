@@ -13,7 +13,7 @@ const History = () => {
     <>
       <main className="main__container">
         <Drawer />
-        <section>
+        <section className="main__content">
           <div className="d-flex space-bw align-center m-1 main__section--header">
             <h5 className="txt-bold">History</h5>
             <button

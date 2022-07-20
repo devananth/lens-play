@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const useAxios = () => {
   const [loader, setLoader] = useState(false);
@@ -10,9 +11,13 @@ const useAxios = () => {
     setLoader(true);
     try {
       const apiResponse = await axios.request(params);
-      setResponse(apiResponse);
+
+      if (apiResponse?.status === 200 || apiResponse?.status === 201) {
+        setResponse(apiResponse);
+      } else {
+        toast.error("Something went worng !");
+      }
     } catch (error) {
-      console.log(error);
       console.error(error);
     } finally {
       setLoader(false);

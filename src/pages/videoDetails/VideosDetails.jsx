@@ -62,7 +62,7 @@ const VideoDetails = () => {
   return (
     <main className="main__container">
       <Drawer />
-      <section>
+      <section className="main__content">
         <div className="grid-70-30 m-1">
           {loader ? (
             <Loader />

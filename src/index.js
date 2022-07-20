@@ -8,6 +8,7 @@ import {
   LikesProvider,
   ModalProvider,
   PlaylistProvider,
+  ThemeProvider,
   VideoProvider,
   WatchLaterProvider,
 } from "./contexts";
@@ -20,23 +21,25 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ModalProvider>
-        <CategoryProvider>
-          <VideoProvider>
-            <AuthProvider>
-              <HistoryProvider>
-                <PlaylistProvider>
-                  <LikesProvider>
-                    <WatchLaterProvider>
-                      <App />
-                    </WatchLaterProvider>
-                  </LikesProvider>
-                </PlaylistProvider>
-              </HistoryProvider>
-            </AuthProvider>
-          </VideoProvider>
-        </CategoryProvider>
-      </ModalProvider>
+      <ThemeProvider>
+        <ModalProvider>
+          <CategoryProvider>
+            <VideoProvider>
+              <AuthProvider>
+                <HistoryProvider>
+                  <PlaylistProvider>
+                    <LikesProvider>
+                      <WatchLaterProvider>
+                        <App />
+                      </WatchLaterProvider>
+                    </LikesProvider>
+                  </PlaylistProvider>
+                </HistoryProvider>
+              </AuthProvider>
+            </VideoProvider>
+          </CategoryProvider>
+        </ModalProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

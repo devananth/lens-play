@@ -4,7 +4,7 @@ const NotFound = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="d-flex xy-center col">
+      <section className="main__content d-flex xy-center col">
         <span className="txt-3xl txt-bold m-1">
           Sorry, the page you requested is not found{" "}
         </span>

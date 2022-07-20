@@ -12,7 +12,7 @@ const Playlists = () => {
     <>
       <main className="main__container">
         <Drawer />
-        <section>
+        <section className="main__content">
           <h5 className="my-1">My Playlists</h5>
           <div className="grid-autofill-layout">
             {playlists.length > 0 ? (

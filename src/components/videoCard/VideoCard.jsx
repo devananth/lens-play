@@ -49,7 +49,12 @@ const VideoCard = (props) => {
         className="thumbnail__wrapper cursor-ptr"
         onClick={() => navigate(`/video/${youtubeID}`)}
       >
-        <img className="img-responsive" src={thumbnail} alt={title} />
+        <img
+          className="img-responsive"
+          loading="lazy"
+          src={thumbnail}
+          alt={title}
+        />
       </div>
       <div className="video__content d-flex space-bw gap-1">
         <div className="d-flex space-bw gap-1">
@@ -57,6 +62,7 @@ const VideoCard = (props) => {
             className="avatar-sm rounded-full"
             src={creatorLogo}
             alt={`${creator} Logo`}
+            loading="lazy"
           />
 
           <div className="d-flex col gap-1">

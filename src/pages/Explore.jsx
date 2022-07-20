@@ -1,9 +1,13 @@
 import { v4 as uuid } from "uuid";
 import { useEffect, useState } from "react";
-import { useDocumentTitle } from "../custom-hooks";
+import { useDocumentTitle, useFilteredVideos } from "../custom-hooks";
 import { Navbar, Drawer, Loader, Chips, VideoCard } from "../components";
 import { useCategory, useVideos } from "../contexts";
-import { getSelectedCategoryVideos, getSortedVideos } from "../utils";
+import {
+  getSearchedVideos,
+  getSelectedCategoryVideos,
+  getSortedVideos,
+} from "../utils";
 
 const Explore = () => {
   useDocumentTitle("Explore | Lens-Play");
@@ -21,12 +25,7 @@ const Explore = () => {
 
   const { videos, sortBy } = videoState;
 
-  const filteredVideos = categories
-    ? getSortedVideos(
-        getSelectedCategoryVideos(selectedCategory, videos),
-        sortBy
-      )
-    : [];
+  let filteredVideos = categories ? useFilteredVideos() : [];
 
   const sortByHandler = (type) => {
     if (type === "latest") {
@@ -40,7 +39,7 @@ const Explore = () => {
     <>
       <main className="main__container">
         <Drawer />
-        <section>
+        <section className="main__content">
           {categoryLoader || videoLoader ? (
             <Loader />
           ) : (
@@ -74,11 +73,14 @@ const Explore = () => {
             )}
           </div>
 
-          <div className="grid-autofill-layout">
-            {filteredVideos &&
+          <div className="grid-autofill-layout mr-1">
+            {filteredVideos.length === 0 ? (
+              <h5>No videos found to display...</h5>
+            ) : (
               filteredVideos.map((video) => (
                 <VideoCard key={video._id} {...video} />
-              ))}
+              ))
+            )}
           </div>
         </section>
       </main>

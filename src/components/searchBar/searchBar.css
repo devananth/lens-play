@@ -1,6 +1,13 @@
 .nav__search__container{
-    border: 1px solid var(--primary-active-color);
+    border: 1px solid var(--primary-color);
     width : 80%;
+    background-color: var(--nav-background-color);
+    color : var(--text-color);
+}
+
+.nav__search{
+    background-color: var(--nav-background-color);
+    color : var(--text-color);
 }
 
 .nav__search::placeholder{
