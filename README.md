@@ -1,6 +1,5 @@
-<div align="center">
 # Lens Play
-</div>
+
 
 Lens Play is a video library of free programming tutorials.
 
