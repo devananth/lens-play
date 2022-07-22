@@ -26,4 +26,4 @@ Lens Play is a video library of free programming tutorials.
 - Single Video Page
 - Loading & Alerts
 
-### Live Link: [Click here](https://lens-play-git-refactor-devananth.vercel.app/)
+### Live Link: [Click here](https://lens-play.vercel.app/)
