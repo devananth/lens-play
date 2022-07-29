@@ -22,6 +22,10 @@ const PlaylistDetails = () => {
     navigate("/playlists");
   };
 
+  if (currentPlaylist === undefined) {
+    navigate("/");
+  }
+
   return (
     <>
       <main className="main__container">
@@ -34,9 +38,11 @@ const PlaylistDetails = () => {
             </button>
           </div>
           <div className="grid-autofill-layout">
-            {videos.map((video) => (
-              <VideoCard key={video._id} {...video} />
-            ))}
+            {videos.length > 0 ? (
+              videos.map((video) => <VideoCard key={video._id} {...video} />)
+            ) : (
+              <h4>No videos found ...</h4>
+            )}
           </div>
         </section>
       </main>

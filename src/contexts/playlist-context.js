@@ -35,10 +35,12 @@ const PlaylistProvider = ({ children }) => {
         let updatedPlaylists = response?.data?.playlists;
 
         if (updatedPlaylists.length > playlists.length) {
-          addVideoToPlaylist(
-            updatedPlaylists[updatedPlaylists.length - 1],
-            videoToAddInPlaylist
-          );
+          if (videoToAddInPlaylist) {
+            addVideoToPlaylist(
+              updatedPlaylists[updatedPlaylists.length - 1],
+              videoToAddInPlaylist
+            );
+          }
         }
         setPlaylists(updatedPlaylists);
       } else {
