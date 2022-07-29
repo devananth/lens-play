@@ -17,8 +17,12 @@ const PlaylistCard = ({ playlist }) => {
       >
         <img
           className="img-responsive"
-          src={videos[0].thumbnail}
-          alt={videos[0].title}
+          src={
+            videos[0]?.thumbnail
+              ? videos[0]?.thumbnail
+              : "https://i.ytimg.com/img/no_thumbnail.jpg"
+          }
+          alt={videos[0]?.title}
         />
 
         <span className="playlist__card__overlay txt-bold txt-4xl">

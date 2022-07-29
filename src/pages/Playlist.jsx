@@ -1,12 +1,14 @@
 import { useDocumentTitle } from "../custom-hooks";
 import { Drawer } from "../components";
-import { usePlaylists } from "../contexts";
+import { usePlaylists, useModal } from "../contexts";
 import { PlaylistCard } from "../components";
 
 const Playlists = () => {
   useDocumentTitle("Playlists | Lens-Play");
 
   const { playlists } = usePlaylists();
+
+  const { setShowModal } = useModal();
 
   return (
     <>

@@ -6,8 +6,9 @@
 
 .playlist__card__img__container{
     position: relative;
-    height: fit-content;
+    height: 10.5rem;
     display: block;
+    overflow: hidden;
 }
   
 .playlist__card__overlay {
