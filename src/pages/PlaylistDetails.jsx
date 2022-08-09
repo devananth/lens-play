@@ -3,28 +3,33 @@ import { Drawer, VideoCard } from "../components";
 import { usePlaylists } from "../contexts";
 import { PlaylistCard } from "../components";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const PlaylistDetails = () => {
   useDocumentTitle("Playlist | Lens-Play");
 
-  const { playlists, deleteEntirePlaylist } = usePlaylists();
+  const { playlists, deleteEntirePlaylist, removeVideoFromPlaylist } =
+    usePlaylists();
 
   const { id } = useParams();
 
-  const currentPlaylist = playlists.find((playlist) => playlist._id === id);
-
-  const { title, videos } = currentPlaylist;
-
   const navigate = useNavigate();
 
+  const currentPlaylist = playlists.find((playlist) => playlist._id === id);
+
+  const { title, videos } = currentPlaylist ?? { title: "", videos: [] };
+
   const deleteHandler = () => {
-    deleteEntirePlaylist(currentPlaylist);
+    console.log(currentPlaylist);
+    currentPlaylist?.videos.forEach((video) =>
+      removeVideoFromPlaylist(currentPlaylist, video)
+    );
     navigate("/playlists");
   };
 
-  if (currentPlaylist === undefined) {
-    navigate("/");
-  }
+  // if (currentPlaylist === undefined) {
+  //   navigate("/");
+  // }
 
   return (
     <>

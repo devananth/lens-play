@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   useAuth,
   useLikes,
@@ -8,7 +8,6 @@ import {
   usePlaylists,
 } from "../../contexts";
 import { useVideoHandlers } from "../../custom-hooks";
-import { isVideoInArray } from "../../utils";
 import "./videoCard.css";
 
 const VideoCard = (props) => {
@@ -39,9 +38,22 @@ const VideoCard = (props) => {
     historyHandler,
   } = useVideoHandlers(video);
 
+  const { removeVideoFromPlaylist, playlists } = usePlaylists();
+
   const location = useLocation();
 
   const navigate = useNavigate();
+
+  const currentPath = location?.pathname;
+
+  const isInPlaylistPage = currentPath.includes("playlists");
+
+  let currentPlaylist = null;
+
+  if (isInPlaylistPage) {
+    const { id } = useParams();
+    currentPlaylist = playlists.find((playlist) => playlist._id === id);
+  }
 
   return (
     <div className="video__card">
@@ -115,11 +127,18 @@ const VideoCard = (props) => {
           </li>
           <li
             onClick={(e) => {
-              setShowOptionsDropdown(false);
-              playlistHandler(e);
+              if (!isInPlaylistPage) {
+                setShowOptionsDropdown(false);
+                playlistHandler(e);
+              } else {
+                removeVideoFromPlaylist(currentPlaylist, video);
+              }
             }}
           >
-            <i className="fas fa-plus"></i>Save to playlist
+            <i
+              className={`fas ${isInPlaylistPage ? "fa-minus" : "fa-plus"}`}
+            ></i>
+            {`${isInPlaylistPage ? "Remove from" : "Save to"} playlist`}
           </li>
         </ul>
       )}
