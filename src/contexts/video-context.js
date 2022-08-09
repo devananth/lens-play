@@ -5,6 +5,7 @@ import { useAxios } from "../custom-hooks";
 const initialVidoeState = {
   videos: [],
   sortBy: "",
+  searchBy: "",
 };
 
 const VideoContext = createContext(initialVidoeState);

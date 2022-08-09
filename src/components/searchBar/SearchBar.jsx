@@ -20,7 +20,7 @@ const SearchBar = ({ mobileScreen }) => {
   };
 
   const searchChangeHandler = (event) => {
-    setSearchValue(event.target.value);
+    setSearchValue(() => event.target.value);
     setVideoState((prevState) => ({ ...prevState, searchBy: searchValue }));
   };
 

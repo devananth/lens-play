@@ -1,5 +1,11 @@
+import { useVideos } from "../contexts";
+
 const getSearchedVideos = (searchPattern, videos) => {
   searchPattern = searchPattern ? searchPattern.trim() : "";
+
+  const {
+    videoState: { videos: allVideos },
+  } = useVideos();
 
   if (searchPattern === "") {
     return [...videos];
